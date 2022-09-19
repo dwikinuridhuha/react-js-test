@@ -1,31 +1,48 @@
-import { useState, useCallback } from "react";
-import Todos from "./Todo";
+import Form from "./components/Form";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [todos, setTodos] = useState([]);
-
-  const increment = () => {
-    setCount((c) => c + 1);
-  };
-  const addTodo = useCallback(() => {
-    setTodos((t) => [...t, "New Todo"]);
-  }, [todos]);
-
-  // const addTodo = () => {
-  //   setTodos((t) => [...t, "New Todo"]);
-  // };
-
-  // console.log("parent render");
+  const formArray = [
+    {
+      type: "text",
+      payload: "trend",
+      defaultValue: "test",
+      label: "show trend",
+    },
+    {
+      type: "date",
+      payload: "date-input",
+      defaultValue: "2022-06-16",
+      label: "show date",
+    },
+    {
+      type: "email",
+      payload: "emails",
+      defaultValue: "test@email.com",
+      label: "show email",
+    },
+    {
+      type: "password",
+      payload: "pwd",
+      defaultValue: "",
+      label: "show password",
+    },
+    {
+      type: "checkbox",
+      payload: "check",
+      defaultValue: true,
+      label: "show check",
+    },
+  ];
 
   return (
     <>
-      <Todos todos={todos} addTodo={addTodo} />
+      <Form formArray={formArray} />
+      {/* <Todos todos={todos} addTodo={addTodo} />
       <hr />
       <div>
         Count: {count}
         <button onClick={increment}>+</button>
-      </div>
+      </div> */}
     </>
   );
 };
